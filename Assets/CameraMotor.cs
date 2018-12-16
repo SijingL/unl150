@@ -26,7 +26,8 @@ public class CameraMotor : MonoBehaviour {
 	}
 
 	private void Move (){
-		thisRigidbody.AddForce(MoveVector * moveSpeed);
+		//thisRigidbody.AddForce(MoveVector * moveSpeed);
+		thisRigidbody.velocity = MoveVector * moveSpeed;
 	}
 
 	private Vector3 PoolInput(){
