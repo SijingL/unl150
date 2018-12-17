@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class VirtualJoyStick : MonoBehaviour, IPointerUpHandler{
+public class VirtualJoyStick : MonoBehaviour{
 	private Image bgImg;
 	private Image joystickImg;
 	private Vector3 inputVector;
@@ -36,13 +36,13 @@ public class VirtualJoyStick : MonoBehaviour, IPointerUpHandler{
 									,inputVector.z * (bgImg.rectTransform.sizeDelta.y / 3));
 				}
             }
-        }
-	}
 
-	public virtual void OnPointerUp(PointerEventData ped)
-	{
-		inputVector = Vector3.zero;
-		joystickImg.rectTransform.anchoredPosition = Vector3.zero;
+            if (touch.phase == TouchPhase.Ended)
+            {
+            	inputVector = Vector3.zero;
+				joystickImg.rectTransform.anchoredPosition = Vector3.zero;
+            }
+        }
 	}
 
 	public float Horizontal(){
