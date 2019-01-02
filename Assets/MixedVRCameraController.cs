@@ -8,23 +8,21 @@ using System.Collections;
 public class MixedVRCameraController : MonoBehaviour
 {
 
-    [SerializeField] private float fieldOfView = 60f;//not sure what this line used for?
+    //[SerializeField] private float fieldOfView = 60f;
 
     void Start()
     {
         UnityEngine.XR.XRSettings.enabled = false;
-        //Camera.main.GetComponent<Transform>().localRotation = UnityEngine.XR.InputTracking.GetLocalRotation(XRNode.CenterEye);
+        Camera.main.GetComponent<Transform>().localRotation = UnityEngine.XR.InputTracking.GetLocalRotation(XRNode.CenterEye);
+        transform.localPosition = new Vector3(0,0,0);
+        transform.localRotation = new Quaternion(0,0,0,0);
     }
 
     void Update()
-    {
-        //if (UnityEngine.XR.XRSettings.enabled)
-        {
-            transform.localPosition = UnityEngine.XR.InputTracking.GetLocalPosition(UnityEngine.XR.XRNode.CenterEye);          
-            transform.localRotation = UnityEngine.XR.InputTracking.GetLocalRotation(UnityEngine.XR.XRNode.CenterEye);
-        }
+    {         
+        transform.localRotation = UnityEngine.XR.InputTracking.GetLocalRotation(UnityEngine.XR.XRNode.CenterEye);
     }
- 
+    /*
     public void ToggleVR()
     {
         SetVR(!UnityEngine.XR.XRSettings.enabled);
@@ -37,5 +35,5 @@ public class MixedVRCameraController : MonoBehaviour
     public void SetVR(bool enabled)
     {
         UnityEngine.XR.XRSettings.enabled = enabled;
-    }
+    }*/
 }
