@@ -26,7 +26,9 @@ public class CameraMotor : MonoBehaviour {
 	}
 
 	private void Move (){
-		thisRigidbody.AddForce(MoveVector * moveSpeed);
+		//thisRigidbody.AddForce(MoveVector * moveSpeed);
+		thisRigidbody.velocity = UnityEngine.XR.InputTracking.GetLocalRotation(UnityEngine.XR.XRNode.CenterEye) * MoveVector * moveSpeed;
+		Debug.Log(thisRigidbody.velocity);
 	}
 
 	private Vector3 PoolInput(){
